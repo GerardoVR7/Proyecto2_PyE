@@ -37,7 +37,19 @@ def generateChest():
         print('Magico')
 
 def generateCarts():
-    pass
+    typeCard = ""
+    randomCard = np.random.uniform(1,100)
+
+    print('Carta: ' , round(randomCard) )
+    
+    if round(randomCard) >= 1 and round(randomCard) <= 58:
+        print('Comun')
+    elif round(randomCard) >= 59 and round(randomCard) <= 78:
+        print('Especiales')
+    elif round(randomCard) >= 79 and round(randomCard) <= 89:
+        print('Epicas')
+    elif round(randomCard) >= 90 and round(randomCard) <= 100:
+        print('Legendaria')
 
 
 def calculateSamples(quantity):
