@@ -84,6 +84,33 @@ def generateCarts(typeChest):
             print('Epicas')
         elif round(randomCard) >= 90 and round(randomCard) <= 100:
             print('Legendaria')
+    elif (typeChest == 'SuperMagico'):
+        if round(randomCard) >= 1 and round(randomCard) <= 40:
+            print('Comun')
+        elif round(randomCard) >= 41 and round(randomCard) <= 69:
+            print('Especiales')
+        elif round(randomCard) >= 70 and round(randomCard) <= 88:
+            print('Epicas')
+        elif round(randomCard) >= 89 and round(randomCard) <= 100:
+            print('Legendaria')
+    elif (typeChest == 'Cofre del Rey'):
+        if round(randomCard) >= 1 and round(randomCard) <= 38:
+            print('Comun')
+        elif round(randomCard) >= 39 and round(randomCard) <= 59:
+            print('Especiales')
+        elif round(randomCard) >= 60 and round(randomCard) <= 85:
+            print('Epicas')
+        elif round(randomCard) >= 86 and round(randomCard) <= 100:
+            print('Legendaria')
+    elif (typeChest == 'Cofre del Rey Legendario'):
+        if round(randomCard) >= 1 and round(randomCard) <= 40:
+            print('Comun')
+        elif round(randomCard) >= 41 and round(randomCard) <= 68:
+            print('Especiales')
+        elif round(randomCard) >= 69 and round(randomCard) <= 79:
+            print('Epicas')
+        elif round(randomCard) >= 80 and round(randomCard) <= 100:
+            print('Legendaria')        
 
     return typeCard, quantityCarts
 
