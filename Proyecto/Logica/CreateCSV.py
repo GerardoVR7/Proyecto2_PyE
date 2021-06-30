@@ -21,24 +21,40 @@ def generateWins():
     print(thePlay)
     return thePlay
 
-def generateChest():
+def generateChest(play):
     typeChest = ""
     randomChest = np.random.uniform(1,4)
-
+    
     print('Cofre: ' , round(randomChest) )
 
-    if round(randomChest) == 1:
-        typeChest = 'Plata'
-        print('Plata')
-    elif round(randomChest) == 2:
-        typeChest = 'Oro'
-        print('Oro')
-    elif round(randomChest) == 3:
-        typeChest = 'Gigante'
-        print('Gigante')
-    elif round(randomChest) == 4:
-        typeChest = 'Magico'
-        print('Magico')
+    if (play == superPlay):
+        
+        if round(randomChest) == 1:
+            typeChest = 'SuperMagico'
+            print('SuperMagico')
+        elif round(randomChest) == 2:
+            typeChest = 'SuperEspecial'
+            print('SuperEspecial')
+        elif round(randomChest) == 3:
+            typeChest = 'Legendario'
+            print('Legendario')
+        
+        superPlay + 240
+        
+    else:
+        
+        if round(randomChest) == 1:
+            typeChest = 'Plata'
+            print('Plata')
+        elif round(randomChest) == 2:
+            typeChest = 'Oro'
+            print('Oro')
+        elif round(randomChest) == 3:
+            typeChest = 'Gigante'
+            print('Gigante')
+        elif round(randomChest) == 4:
+            typeChest = 'Magico'
+            print('Magico')
     return typeChest
 
 def generateCarts(typeChest):
