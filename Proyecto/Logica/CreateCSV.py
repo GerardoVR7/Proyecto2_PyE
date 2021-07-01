@@ -2,11 +2,19 @@ import pandas as pd
 import numpy as np
 import math
 
-def valoresCSV(ruta):
 
+global superPlay
+superPlay = None
+
+def valoresCSV(ruta):
     archivoCSV = pd.read_csv(ruta, header=0)
     print(archivoCSV)
-
+    totalPlays, totalChest, totalCarts, totalQuantity = calculateSamples(100)
+    archivoCSV ["Plays"] = totalPlays
+    archivoCSV ["Chest"] = totalChest
+    archivoCSV ["Carts"] = totalCarts
+    archivoCSV ["Quantity"] = totalQuantity
+    archivoCSV.to_csv(ruta, index=False)
 
 def generateWins():
     thePlay = ""
@@ -23,12 +31,8 @@ def generateWins():
 
 def generateChest(play):
     typeChest = ""
-    randomChest = np.random.uniform(1,4)
-    
-    print('Cofre: ' , round(randomChest) )
-
     if (play == superPlay):
-        
+        randomChest = np.random.uniform(1,3)
         if round(randomChest) == 1:
             typeChest = 'SuperMagico'
             print('SuperMagico')
@@ -42,7 +46,7 @@ def generateChest(play):
         superPlay + 240
         
     else:
-        
+        randomChest = np.random.uniform(1,4)
         if round(randomChest) == 1:
             typeChest = 'Plata'
             print('Plata')
@@ -135,12 +139,20 @@ def calculateSamples(quantity):
     plays = []
     chest = []
     carts = []
+    quantityList = []
     for i in range (quantity):
-        valor1 = generateWins()
-        print(valor1)
-        plays.append(valor1)
-        if (valor1 =="win"):
-            pass
+        gameResult = generateWins()
+        print(gameResult)
+        plays.append(gameResult)
+        if (gameResult =="win"):
+            chestResult = generateChest(i)
+            chest.append(chestResult)
+            cartResult, quantityResult = generateCarts(chestResult)
+            carts.append(cartResult)
+            quantityList.append(quantityResult)
+    return plays, chest, carts, quantityList
+
+
 
 valoresCSV("Proyecto/Archivos/simulacion_1k.csv")
 generateWins()
