@@ -1,5 +1,5 @@
 from CreateCSV import rutaArchivo, valoresCSV
-
+from fractions import Fraction
 import pandas as pd
 import numpy as np
 
@@ -77,10 +77,42 @@ def Probability():
        print('Casos Legendarios: ' , legendarioChestCases)
        print(legendarioProbability)
 
+
+def ClassicProbability():
+       probWin= Fraction(1,2) 
+       probChestComun= Fraction(1,4)
+       probChestEspec= Fraction(1,14)
+       probCard = Fraction(1,4)
+       ChestPlat = 0
+       ChestGold = 0
+       ChestGigant = 0
+       ChestMagic = 0 
+       ChestSuperMagic = 0
+       ChestSuperEspecial = 0
+       ChestLegedary = 0
+       
+       probPrimercaso = probWin * probChestComun * probCard
+       probSegundoCaso = probWin * probChestEspec * probCard	
+
+       ChestPlat = probPrimercaso
+       ChestGold = probPrimercaso
+       ChestGigant = probPrimercaso
+       ChestMagic = probPrimercaso
+       ChestSuperMagic = probSegundoCaso
+       ChestSuperEspecial = probSegundoCaso
+       ChestLegedary = probSegundoCaso 
+       
+       print("Cofre Plata:" , ChestPlat)
+       print("Cofre de Oro" , ChestGold)
+       print("Cofre de Gigante" , ChestGigant)
+       print("Cofre de Magico" , ChestMagic)
+       print("Cofre de Super Magico" , ChestSuperMagic)
+       print("Cofre de Super Especial" , ChestSuperEspecial)
+       print("Cofre de Legendario" , ChestLegedary)
+
+
 arrayCreation()
 Probability()
-
-
 
 
 
