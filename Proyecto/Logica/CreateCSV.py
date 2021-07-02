@@ -178,10 +178,15 @@ def calculateSamples(quantity):
             cartResult, quantityResult = generateCarts(chestResult)
             carts.append(cartResult)
             quantityList.append(quantityResult)
+        else: 
+            chest.append("---")
+            carts.append("---")
+            quantityList.append("---")
 
-    print(len(plays))
+    print("Jugadas\n" , len(plays))
+    print("Cofres\n" , len(chest) )
+    print("Cartas\n" , len(carts) )    
     return plays, chest, carts, quantityList
 
 valoresCSV("Proyecto/Archivos/simulacion_1k.csv")
 generateWins()
-generateChest()
