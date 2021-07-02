@@ -72,7 +72,7 @@ def Probability():
        print(magicoProbability)
        print('Casos Super Magico: ' , superMagicoChestCases)
        print(superMagicoProbability)
-       print('Casos Super especial: ' , superMagicoChestCases)
+       print('Casos Super especial: ' , superEspecialChestCases)
        print(superEspecialProbability)
        print('Casos Legendarios: ' , legendarioChestCases)
        print(legendarioProbability)

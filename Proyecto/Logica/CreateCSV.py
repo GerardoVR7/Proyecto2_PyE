@@ -29,11 +29,9 @@ def generateWins():
         thePlay = "lose"    
     return thePlay
 
-def generateChest(play, especialCase):
-    typeChest = ""    
-    print(play)
-    print(especialCase)
-    if (play == especialCase):
+def generateChest(especialCase):
+    typeChest = ""
+    if (especialCase == 1):
         randomChest = np.random.uniform(1,3)
         if round(randomChest) == 1:
             typeChest = 'SuperMagico'
@@ -171,12 +169,20 @@ def calculateSamples(quantity):
         plays.append(gameResult)
         if (gameResult =="win"):
             wins = wins + 1
-            chestResult = generateChest(wins,especialCase)
-            chest.append(chestResult)
-            cartResult, quantityResult = generateCarts(chestResult)
-            carts.append(cartResult)
-            quantityList.append(quantityResult)
-            
+
+            if(wins == especialCase):
+                chestResult = generateChest(1)
+                chest.append(chestResult)
+                cartResult, quantityResult = generateCarts(chestResult)
+                carts.append(cartResult)
+                quantityList.append(quantityResult)
+                especialCase = especialCase + 240
+            else: 
+                chestResult = generateChest(0)
+                chest.append(chestResult)
+                cartResult, quantityResult = generateCarts(chestResult)
+                carts.append(cartResult)
+                quantityList.append(quantityResult)
         else: 
             chest.append("---")
             carts.append("---")
