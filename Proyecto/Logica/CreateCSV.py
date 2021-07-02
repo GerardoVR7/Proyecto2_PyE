@@ -2,12 +2,13 @@ import pandas as pd
 import numpy as np
 import math
 
-
 global superPlay
 superPlay = None
+superPlay = 240
 
 def valoresCSV(ruta):
     archivoCSV = pd.read_csv(ruta, header=0)
+    
     print(archivoCSV)
     totalPlays, totalChest, totalCarts, totalQuantity = calculateSamples(100)
     archivoCSV ["Plays"] = totalPlays
@@ -31,6 +32,7 @@ def generateWins():
 
 def generateChest(play):
     typeChest = ""
+    print("Super play" , superPlay)
     if (play == superPlay):
         randomChest = np.random.uniform(1,3)
         if round(randomChest) == 1:
@@ -176,9 +178,9 @@ def calculateSamples(quantity):
             cartResult, quantityResult = generateCarts(chestResult)
             carts.append(cartResult)
             quantityList.append(quantityResult)
+
+    print(len(plays))
     return plays, chest, carts, quantityList
-
-
 
 valoresCSV("Proyecto/Archivos/simulacion_1k.csv")
 generateWins()
