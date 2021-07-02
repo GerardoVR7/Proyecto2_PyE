@@ -17,9 +17,10 @@ def arrayCreation():
        arrayQuantity = np.array(df['Quantity'].sort_values())
        len(play)
 
-def Probability():
+def empiricalProbability():
        winCases = 0
        loseCases = 0
+
        plataChestCases = 0
        oroChestCases = 0
        giganteChestCases = 0
@@ -27,6 +28,11 @@ def Probability():
        superMagicoChestCases = 0
        superEspecialChestCases = 0
        legendarioChestCases = 0
+
+       comunCartCases = 0
+       especialCartCases = 0
+       epicCartCases = 0
+       legendaryCartCases = 0
 
        for i in range(len(play)):
 
@@ -46,11 +52,22 @@ def Probability():
                             superEspecialChestCases = superEspecialChestCases + 1
                      if (arrayCofre[i] == "Legendario"):
                             legendarioChestCases = legendarioChestCases + 1
+
+                     if (arrayCarta[i] == "Comun"):
+                            comunCartCases = comunCartCases + 1
+                     if (arrayCarta[i] == "Especial"):
+                            especialCartCases = especialCartCases + 1
+                     if (arrayCarta[i] == "Epica"):
+                            epicCartCases = epicCartCases + 1
+                     if (arrayCarta[i] == "Legendaria"):
+                            legendaryCartCases = legendaryCartCases + 1
+
               else:
                      loseCases = loseCases + 1
 
        winProbability = winCases / len(play)
        loseProbability = loseCases / len(play)
+
        plataProbability = plataChestCases / len(play)
        oroProbability = oroChestCases / len(play)
        giganteProbability = giganteChestCases / len(play)
@@ -58,6 +75,12 @@ def Probability():
        superMagicoProbability = superMagicoChestCases / len(play)
        superEspecialProbability = superEspecialChestCases / len(play)
        legendarioProbability =  legendarioChestCases / len(play)
+
+       comunCartProbability = comunCartCases / len(play)
+       especialCartProbability = especialCartCases / len(play)
+       epicCartProbability = epicCartCases / len(play)
+       legendaryCartProbability = legendaryCartCases / len(play)
+
        print('Casos ganados: ' , winCases)
        print(winProbability)
        print(loseProbability)
@@ -77,8 +100,17 @@ def Probability():
        print('Casos Legendarios: ' , legendarioChestCases)
        print(legendarioProbability)
 
+       print('Casos cartas comunes: ' , comunCartCases)
+       print('P: ' , comunCartProbability)
+       print('Casos cartas especiales: ' , especialCartCases)
+       print('P: ' , especialCartProbability)
+       print('Casos cartas epicas: ' , epicCartCases)
+       print('P: ' , epicCartProbability)
+       print('Casos cartas legendarias: ' , legendaryCartCases)
+       print('P: ' , legendaryCartProbability)
+
 arrayCreation()
-Probability()
+empiricalProbability()
 
 
 
