@@ -5,6 +5,9 @@ import math
 global superPlay
 superPlay = None
 superPlay = 240
+global rutaArchivo
+rutaArchivo = None
+rutaArchivo = "Proyecto/Archivos/simulacion_1k.csv"
 
 def valoresCSV(ruta):
     archivoCSV = pd.read_csv(ruta, header=0)
@@ -188,5 +191,5 @@ def calculateSamples(quantity):
     print("Cartas\n" , len(carts) )    
     return plays, chest, carts, quantityList
 
-valoresCSV("Proyecto/Archivos/simulacion_1k.csv")
+valoresCSV(rutaArchivo)
 generateWins()
