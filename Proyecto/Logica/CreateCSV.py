@@ -6,8 +6,7 @@ global superPlay
 superPlay = False
 
 global rutaArchivo
-rutaArchivo = None
-rutaArchivo = "Proyecto/Archivos/simulacion_1k.csv"
+rutaArchivo = r'C:\Users\mario\ProyectoPYE\Proyecto2_PyE\Proyecto\Archivos\simulacion_1k.csv'
 
 def valoresCSV(ruta):
     archivoCSV = pd.read_csv(ruta, header=0)
