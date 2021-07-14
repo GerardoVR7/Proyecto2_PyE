@@ -31,7 +31,7 @@ def roulette(valor):
     secondValue = 0
     if (valor == 'win'):
         randomRoulette = np.random.randint(10, size=1)
-        if(randomRoulette <= 6):
+        if(randomRoulette >= 0 and randomRoulette <= 6):
             randomChest = np.random.randint(4,size=1)
             if (randomChest == 0):
                 typeChest = 'Plata'
@@ -41,7 +41,7 @@ def roulette(valor):
                 firsValue = 3
             if (randomChest == 2):
                 typeChest = 'Gigante'
-                firstValue =5
+                firsValue =5
             if (randomChest == 3):
                 typeChest = 'Magico'
                 firsValue = 7
@@ -57,7 +57,7 @@ def roulette(valor):
                 typeChest = 'Legendario'
                 firsValue = 10
         
-        if(randomRoulette <= 6):
+        if(randomRoulette >= 0 and randomRoulette <= 6):
             randomChest2 = np.random.randint(4,size=1)
             if (randomChest2 == 0):
                 typeChest2 = 'Plata'
