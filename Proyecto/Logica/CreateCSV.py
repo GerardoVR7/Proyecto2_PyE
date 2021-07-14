@@ -4,7 +4,7 @@ import math
 
 global rutaArchivo
 rutaArchivo = None
-rutaArchivo = r"C:\Users\OEM\Desktop\Universidad\Probabilidad y estadistica\C2\Programa_C2.A4\Proyecto\Archivos\simulacion_1k.csv"
+rutaArchivo = "Proyecto\Archivos\simulacion_1k.csv"
 
 def valoresCSV(ruta):
     archivoCSV = pd.read_csv(ruta, header=0)
