@@ -2,195 +2,116 @@ import pandas as pd
 import numpy as np
 import math
 
-global superPlay
-superPlay = False
-
 global rutaArchivo
-rutaArchivo = r'C:\Users\mario\ProyectoPYE\Proyecto2_PyE\Proyecto\Archivos\simulacion_1k.csv'
+rutaArchivo = None
+rutaArchivo = r"C:\Users\OEM\Desktop\Universidad\Probabilidad y estadistica\C2\Programa_C2.A4\Proyecto\Archivos\simulacion_1k.csv"
 
 def valoresCSV(ruta):
     archivoCSV = pd.read_csv(ruta, header=0)
-    
-    print(archivoCSV)
-    totalPlays, totalChest, totalCarts, totalQuantity = calculateSamples(1000)
+    totalPlays, totalChest1, totalChest2, totalQuantity = calculateSamples(1000)
     archivoCSV ["Plays"] = totalPlays
-    archivoCSV ["Chest"] = totalChest
-    archivoCSV ["Carts"] = totalCarts
+    archivoCSV ["Chest1"] = totalChest1
+    archivoCSV ["Chest2"] = totalChest2
     archivoCSV ["Quantity"] = totalQuantity
     archivoCSV.to_csv(ruta, index=False)
 
 def generateWins():
     thePlay = ""
-    randomWin = np.random.uniform(1,2)
-    if ( round(randomWin) == 1):
+    randomWin = np.random.randint(2, size=1)
+    if ( randomWin == 1):
         thePlay = "win"
     else:
         thePlay = "lose"    
     return thePlay
 
-def generateChest(especialCase):
+def roulette(valor):
     typeChest = ""
-    if (especialCase == 1):
-        randomChest = np.random.uniform(1,3)
-        if round(randomChest) == 1:
-            typeChest = 'SuperMagico'
-
-        elif round(randomChest) == 2:
-            typeChest = 'SuperEspecial'
-
-        elif round(randomChest) == 3:
-            typeChest = 'Legendario'
-    else:
-        randomChest = np.random.uniform(1,4)
-        if round(randomChest) == 1:
-            typeChest = 'Plata'
-
-        elif round(randomChest) == 2:
-            typeChest = 'Oro'
-
-        elif round(randomChest) == 3:
-            typeChest = 'Gigante'
-
-        elif round(randomChest) == 4:
-            typeChest = 'Magico'
-
-    return typeChest
-
-def generateCarts(typeChest):
-    typeCard = ""
-    quantityCarts = ""
-    randomCard = np.random.uniform(1,100)
-
-    if (typeChest == 'Plata'):
-        if round(randomCard) >= 1 and round(randomCard) <= 69:
-
-            typeCard = 'Comun'
-            quantityCarts = 16
-        elif round(randomCard) >= 70 and round(randomCard) <= 88:
-
-            typeCard = 'Especial'
-            quantityCarts = 2
-        elif round(randomCard) >= 89 and round(randomCard) <= 98:
-
-            typeCard = 'Epica'
-            quantityCarts = 1
-        elif round(randomCard) >= 99 and round(randomCard) <= 100:
-
-            typeCard = 'Legendaria'
-            quantityCarts = 1
-    elif (typeChest == 'Oro'):
-        if round(randomCard) >= 1 and round(randomCard) <= 69:
-
-            typeCard = 'Comun'
-            quantityCarts = 29
-        elif round(randomCard) >= 70 and round(randomCard) <= 85:
-
-            typeCard = 'Especial'
-            quantityCarts = 10
-        elif round(randomCard) >= 86 and round(randomCard) <= 96:
-
-            typeCard = 'Epica'
-            quantityCarts = 3
-        elif round(randomCard) >= 97 and round(randomCard) <= 100:
-
-            typeCard = 'Legendaria'
-            quantityCarts = 1
-    elif (typeChest == 'Gigante'):
-        if round(randomCard) >= 1 and round(randomCard) <= 58:
-
-            typeCard = 'Comun'
-            quantityCarts = 300
-        elif round(randomCard) >= 59 and round(randomCard) <= 78:
-
-            typeCard = 'Especial'
-            quantityCarts = 74
-        elif round(randomCard) >= 79 and round(randomCard) <= 92:
-
-            typeCard = 'Epicas'
-            quantityCarts = 6
-        elif round(randomCard) >= 93 and round(randomCard) <= 100:
-
-            typeCard = 'Legendaria'
-            quantityCarts = 1
-    elif (typeChest == 'Magico'):
-        if round(randomCard) >= 1 and round(randomCard) <= 58:
-
-            typeCard = 'Comun'
-            quantityCarts = 72
-        elif round(randomCard) >= 59 and round(randomCard) <= 78:
-
-            typeCard = 'Especial'
-            quantityCarts = 21
-        elif round(randomCard) >= 79 and round(randomCard) <= 89:
-
-            typeCard = 'Epica'
-            quantityCarts = 10
-        elif round(randomCard) >= 90 and round(randomCard) <= 100:
-
-            typeCard = 'Legendaria'
-            quantityCarts = 1
-    elif (typeChest == 'SuperMagico'):
-        if round(randomCard) >= 1 and round(randomCard) <= 88:
-
-            typeCard = 'Epica'
-            quantityCarts = 35
-        elif round(randomCard) >= 89 and round(randomCard) <= 100:
-
-            typeCard = 'Legendaria'
-            quantityCarts = 1
-    elif (typeChest == 'SuperEspecial'):
-        if round(randomCard) >= 1 and round(randomCard) <= 40:
-
-            typeCard = 'Comun'
-            quantityCarts = 400
-        elif round(randomCard) >= 41 and round(randomCard) <= 100:
-
-            typeCard = 'Especial'
-            quantityCarts = 120
-    elif (typeChest == 'Legendario'):
-        if round(randomCard) >= 1 and round(randomCard) <= 100:
-
-            typeCard = 'Legendaria'
-            quantityCarts = 1      
-
-    return typeCard, quantityCarts
-
+    typeChest2 = ""
+    firsValue = 0
+    secondValue = 0
+    if (valor == 'win'):
+        randomRoulette = np.random.randint(10, size=1)
+        if(randomRoulette <= 6):
+            randomChest = np.random.randint(4,size=1)
+            if (randomChest == 0):
+                typeChest = 'Plata'
+                firsValue = 1
+            if (randomChest == 1):
+                typeChest = 'Oro'
+                firsValue = 3
+            if (randomChest == 2):
+                typeChest = 'Gigante'
+                firstValue =5
+            if (randomChest == 3):
+                typeChest = 'Magico'
+                firsValue = 7
+        else:
+            randomChest = np.random.randint(3,size=1)
+            if(randomChest == 0):
+                typeChest = 'SuperEspecial'
+                firsValue = 7
+            if(randomChest == 1):
+                typeChest = 'SuperMagico'
+                firsValue = 9
+            if (randomChest == 2):
+                typeChest = 'Legendario'
+                firsValue = 10
+        
+        if(randomRoulette <= 6):
+            randomChest2 = np.random.randint(4,size=1)
+            if (randomChest2 == 0):
+                typeChest2 = 'Plata'
+                secondValue = 1
+            if (randomChest2 == 1):
+                typeChest2 = 'Oro'
+                secondValue = 3
+            if (randomChest2 == 2):
+                typeChest2 = 'Gigante'
+                secondValue = 5
+            if (randomChest2 == 3):
+                typeChest2 = 'Magico'
+                secondValue = 7
+        else:
+            randomChest2 = np.random.randint(3,size=1)
+            if(randomChest2 == 0):
+                typeChest2 = 'SuperEspecial'
+                secondValue = 7
+            if(randomChest2 == 1):
+                typeChest2 = 'SuperMagico'
+                secondValue = 9
+            if (randomChest2 == 2):
+                typeChest2 = 'Legendario'
+                secondValue = 10
+    quantity = firsValue + secondValue
+    print(typeChest , typeChest2, quantity)
+    return typeChest, typeChest2, quantity
 
 def calculateSamples(quantity):
     plays = []
     chest = []
-    carts = []
+    chest2 = []
     quantityList = []
-    especialCase = 241
     wins = 0
     for i in range (quantity):
         gameResult = generateWins()
         plays.append(gameResult)
         if (gameResult =="win"):
             wins = wins + 1
-
-            if(wins == especialCase):
-                chestResult = generateChest(1)
-                chest.append(chestResult)
-                cartResult, quantityResult = generateCarts(chestResult)
-                carts.append(cartResult)
-                quantityList.append(quantityResult)
-                especialCase = especialCase + 240
-            else: 
-                chestResult = generateChest(0)
-                chest.append(chestResult)
-                cartResult, quantityResult = generateCarts(chestResult)
-                carts.append(cartResult)
-                quantityList.append(quantityResult)
+            typeChest, typeChest2, quantityCarts = roulette(gameResult)
+            chest.append(typeChest)
+            chest2.append(typeChest2)
+            quantityList.append(quantityCarts)
         else: 
-            chest.append("---")
-            carts.append("---")
-            quantityList.append("---")
+            chest.append('vacio')
+            chest2.append('vacio')
+            quantityList.append('vacio')
+
 
     print("Jugadas\n" , len(plays))
     print("Cofres\n" , len(chest) )
-    print("Cartas\n" , len(carts) )    
-    return plays, chest, carts, quantityList
+    print("Cofres2\n" , len(chest2))
+    print("Cartas\n" , len(quantityList))
+    return plays, chest, chest2, quantityList
 
 valoresCSV(rutaArchivo)
-generateWins()
+
