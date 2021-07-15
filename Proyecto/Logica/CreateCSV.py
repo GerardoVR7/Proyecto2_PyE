@@ -4,11 +4,11 @@ import math
 
 global rutaArchivo
 rutaArchivo = None
-rutaArchivo = "Proyecto\Archivos\simulacion_1k.csv"
+rutaArchivo = "Proyecto2_PyE/Proyecto/Archivos/simulacion_1k.csv"
 
-def valoresCSV(ruta):
+def valoresCSV(ruta,shots):
     archivoCSV = pd.read_csv(ruta, header=0)
-    totalPlays, totalChest1, totalChest2, totalQuantity = calculateSamples(1000)
+    totalPlays, totalChest1, totalChest2, totalQuantity = calculateSamples(shots)
     archivoCSV ["Plays"] = totalPlays
     archivoCSV ["Chest1"] = totalChest1
     archivoCSV ["Chest2"] = totalChest2
@@ -113,5 +113,5 @@ def calculateSamples(quantity):
     print("Cartas\n" , len(quantityList))
     return plays, chest, chest2, quantityList
 
-valoresCSV(rutaArchivo)
+
 

@@ -4,12 +4,16 @@ import pandas as pd
 import numpy as np
 
 
-def arrayCreation():
+ruta = "Proyecto/Archivos/simulacion_1k.csv"
+shots = 1000
+
+
+def arrayCreation(rutaArchivo,shots):
        global play
        global arrayChest1
        global arrayChest2
        global arrayQuantity 
-       valoresCSV(rutaArchivo)
+       valoresCSV(rutaArchivo, shots)
        df= pd.read_csv(rutaArchivo)
        play = np.array(df['Plays'].sort_values())
        arrayChest1 = np.array(df['Chest1'].sort_values())
@@ -190,5 +194,5 @@ def empiricalProbability():
        print('Empty Case: ' , quantityEmpity)
        
 
-arrayCreation()
+arrayCreation( ruta, shots )
 empiricalProbability()
