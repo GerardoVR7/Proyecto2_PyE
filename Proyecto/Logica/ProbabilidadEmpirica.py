@@ -189,7 +189,7 @@ def empiricalProbability(rango):
        print(round(s12Probability ,4))
        print('Empty Case: ' , quantityEmpity)
        
-       return plataProbability
-       #,oroProbability,giganteProbability,magicoProbability,superMagicoProbability,superEspecialProbability,legendarioProbability,s1Probability,s2Probability,s3Probability,s4Probability,s5Probability,s6Probability,s7Probability,s8Probability,s9Probability,s10Probability,s11Probability,s12Probability       
+       return plataProbability,oroProbability,giganteProbability,magicoProbability,superMagicoProbability,superEspecialProbability,legendarioProbability
+       #,s1Probability,s2Probability,s3Probability,s4Probability,s5Probability,s6Probability,s7Probability,s8Probability,s9Probability,s10Probability,s11Probability,s12Probability       
 
 

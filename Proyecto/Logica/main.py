@@ -38,9 +38,26 @@ class Application(tk.Frame):
     
     def generatethings(self):
         self.intento = 10000
-        plataProbability=empiricalProbability(self.intento)
-        print("AQUI SE DECIDE TODO: ",plataProbability)
-        self.label= tk.Label(self,text=plataProbability, font='Arial 20').place(x=180,y=380)
+        plataProbability, oroProbability, giganteProbability,magicoProbability,superMagicoProbability,superEspecialProbability,legendarioProbability=empiricalProbability(self.intento)
+        self.label= tk.Label(self,text="Probabilidad de los cofres:", font='Arial 12').place(x=30,y=140)
+        self.label= tk.Label(self,text="Cofre de plata:", font='Arial 12').place(x=30,y=160)
+        self.label= tk.Label(self,text=round(plataProbability,4), font='Arial 12').place(x=140,y=160)
+        self.label= tk.Label(self,text="Cofre de oro:", font='Arial 12').place(x=30,y=180)
+        self.label= tk.Label(self,text=round(oroProbability,4), font='Arial 12').place(x=140,y=180)
+        self.label= tk.Label(self,text="Cofre de gigante:", font='Arial 12').place(x=30,y=200)
+        self.label= tk.Label(self,text=round(giganteProbability,4), font='Arial 12').place(x=160,y=200)
+        self.label= tk.Label(self,text="Cofre de magico:", font='Arial 12').place(x=30,y=220)
+        self.label= tk.Label(self,text=round(magicoProbability,4), font='Arial 12').place(x=160,y=220)
+        self.label= tk.Label(self,text="Cofre de Super Magico:", font='Arial 12').place(x=30,y=240)
+        self.label= tk.Label(self,text=round(superMagicoProbability,4), font='Arial 12').place(x=200,y=240)
+        self.label= tk.Label(self,text="Cofre de Super Especial:", font='Arial 12').place(x=30,y=260)
+        self.label= tk.Label(self,text=round(superEspecialProbability,4), font='Arial 12').place(x=210,y=260)
+        self.label= tk.Label(self,text="Cofre de Legendario:", font='Arial 12').place(x=30,y=280)
+        self.label= tk.Label(self,text=round(legendarioProbability,4), font='Arial 12').place(x=210,y=280)
+
+
+
+
 
     def generatethings2(self):
         self.intento = 50000
