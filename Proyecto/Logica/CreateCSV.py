@@ -83,7 +83,6 @@ def roulette(valor):
                 typeChest2 = 'Legendario'
                 secondValue = 10
     quantity = firsValue + secondValue
-    print(typeChest , typeChest2, quantity)
     return typeChest, typeChest2, quantity
 
 def calculateSamples(quantity):

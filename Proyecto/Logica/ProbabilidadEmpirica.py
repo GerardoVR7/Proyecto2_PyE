@@ -4,10 +4,6 @@ import pandas as pd
 import numpy as np
 
 
-ruta = "Proyecto/Archivos/simulacion_1k.csv"
-shots = 1000
-
-
 def arrayCreation(rutaArchivo,shots):
        global play
        global arrayChest1
@@ -15,14 +11,14 @@ def arrayCreation(rutaArchivo,shots):
        global arrayQuantity 
        valoresCSV(rutaArchivo, shots)
        df= pd.read_csv(rutaArchivo)
-       play = np.array(df['Plays'].sort_values())
-       arrayChest1 = np.array(df['Chest1'].sort_values())
-       arrayChest2 = np.array(df['Chest2'].sort_values())
-       arrayQuantity = np.array(df['Quantity'].sort_values())
+       play = np.array(df['Plays'])
+       arrayChest1 = np.array(df['Chest1'])
+       arrayChest2 = np.array(df['Chest2'])
+       arrayQuantity = np.array(df['Quantity'])
        print(len(arrayChest1))
        print(arrayQuantity)
 
-def empiricalProbability():
+def empiricalProbability(rango):
        winCases = 0
        loseCases = 0
        #tipos de cofres
@@ -60,10 +56,12 @@ def empiricalProbability():
        s12Case = 0
        quantityEmpity = 0
 
-       for i in range(len(play)):
+       for i in range(rango):
 
               if (play[i] == "win"):
                      winCases = winCases + 1
+              if (play[i] == "lose"):
+                     loseCases = loseCases + 1
               if (arrayChest1[i] == "Plata"):
                      plataChestCases = plataChestCases + 1
               if (arrayChest1[i] == "Oro"):
@@ -121,11 +119,9 @@ def empiricalProbability():
               if (arrayQuantity[i] == 'vacio'):
                      quantityEmpity += 1
 
-              else:
-                     loseCases = loseCases + 1
 
-       winProbability = winCases / len(play)
-       loseProbability = loseCases / len(play)
+       winProbability = winCases / rango
+       loseProbability = loseCases / rango
 
        plataProbability = plataChestCases / winCases
        oroProbability = oroChestCases / winCases
@@ -135,18 +131,18 @@ def empiricalProbability():
        superEspecialProbability = superEspecialChestCases / winCases
        legendarioProbability =  legendarioChestCases / winCases
 
-       s1Probability = s1Case / 139
-       s2Probability = s2Case / 139
-       s3Probability = s3Case / 139
-       s4Probability = s4Case / 139
-       s5Probability = s5Case / 139
-       s6Probability = s6Case / 139
-       s7Probability = s7Case / 139
-       s8Probability = s8Case / 139
-       s9Probability = s9Case / 139
-       s10Probability = s10Case / 139
-       s11Probability = s11Case / 139
-       s12Probability = s12Case / 139
+       s1Probability = s1Case / winCases
+       s2Probability = s2Case / winCases
+       s3Probability = s3Case / winCases
+       s4Probability = s4Case / winCases
+       s5Probability = s5Case / winCases
+       s6Probability = s6Case / winCases
+       s7Probability = s7Case / winCases
+       s8Probability = s8Case / winCases
+       s9Probability = s9Case / winCases
+       s10Probability = s10Case / winCases
+       s11Probability = s11Case / winCases
+       s12Probability = s12Case / winCases
 
        print('Casos ganados: ' , winCases)
        print(winProbability)
@@ -193,6 +189,7 @@ def empiricalProbability():
        print(round(s12Probability ,4))
        print('Empty Case: ' , quantityEmpity)
        
+       return plataProbability
+       #,oroProbability,giganteProbability,magicoProbability,superMagicoProbability,superEspecialProbability,legendarioProbability,s1Probability,s2Probability,s3Probability,s4Probability,s5Probability,s6Probability,s7Probability,s8Probability,s9Probability,s10Probability,s11Probability,s12Probability       
 
-arrayCreation( ruta, shots )
-empiricalProbability()
+
