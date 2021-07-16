@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 from  tkinter import Label, StringVar, ttk
 from tkinter.constants import RAISED
 from tkinter.ttk import Button
@@ -17,6 +18,7 @@ class Application(tk.Frame):
         self.master.configure(width=1200, height=700)
         self.master.resizable(0,0)
         self.place(relwidth=1, relheight=1)
+        
 
     def stage(self):
         self.ruta = "Proyecto/Archivos/simulacion_1k.csv"
@@ -31,11 +33,21 @@ class Application(tk.Frame):
         self.btn3.place(x=110, y=80)
         self.btn4 = tk.Button(self, text='Calcular 100k', command=self.generatethings3)
         self.btn4.place(x=190, y=80)
-        self.boton2=Button(self,text="empirica")
-        self.boton2.place(x=450,y=250)
-        self.boton3=Button(self,text=" ver diagrama de arbol ")
-        self.boton3.place(x=550,y=250)
-    
+        self.label= tk.Label(self,text=" Probabilidad Clasica", font='Arial 12').place(x=590, y=60)
+        self.label= tk.Label(self,text="Valor,       Posibilidad", font='Arial 12').place(x=590, y=100)
+        self.label= tk.Label(self,text="     2           1/139", font='Arial 12').place(x=590, y=120)
+        self.label= tk.Label(self,text="     4           2/139", font='Arial 12').place(x=590, y=140)
+        self.label= tk.Label(self,text="     6           3/139", font='Arial 12').place(x=590, y=160)
+        self.label= tk.Label(self,text="     8           4/139", font='Arial 12').place(x=590, y=180)
+        self.label= tk.Label(self,text="    10           3/139", font='Arial 12').place(x=590, y=200)
+        self.label= tk.Label(self,text="    12           2/139", font='Arial 12').place(x=590, y=220)
+        self.label= tk.Label(self,text="    14           4/139", font='Arial 12').place(x=590, y=240)
+        self.label= tk.Label(self,text="    16           2/139", font='Arial 12').place(x=590, y=260)
+        self.label= tk.Label(self,text="    17           2/139", font='Arial 12').place(x=590, y=280)
+        self.label= tk.Label(self,text="    18           1/139", font='Arial 12').place(x=590, y=300)
+        self.label= tk.Label(self,text="    19           2/139", font='Arial 12').place(x=590, y=320)
+        self.label= tk.Label(self,text="    20           1/139", font='Arial 12').place(x=590, y=340)
+
     def generatethings(self):
         self.intento = 10000
         plataProbability, oroProbability, giganteProbability,magicoProbability,superMagicoProbability,superEspecialProbability,legendarioProbability,s1Probability,s2Probability,s3Probability,s4Probability,s5Probability,s6Probability,s7Probability,s8Probability,s9Probability,s10Probability,s11Probability,s12Probability=empiricalProbability(self.intento)
@@ -78,7 +90,7 @@ class Application(tk.Frame):
         self.label= tk.Label(self,text=round(s11Probability,4,), font='Arial 12').place(x=220,y=540)
         self.label= tk.Label(self,text="Salida numero 20:", font='Arial 12').place(x=30,y=560)
         self.label= tk.Label(self,text=round(s12Probability,4), font='Arial 12').place(x=220, y= 560)
-
+        
 
 
 
